@@ -6,7 +6,10 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <div id="app" class="container">
     <h1>Vue Todo App</h1>
-    <input type="text" name="" id="">
+    <BFormInput
+        placeholder="Enter email"
+      />
+    </BFormGroup>
   </div>
 </template>
 
