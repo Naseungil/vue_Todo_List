@@ -6,7 +6,7 @@ import { ref } from 'vue'
       required: true,
     },
   })
-  const emit = defineEmits(['toggle-checkbox'])
+  const emit = defineEmits(['toggle-checkbox'],['todo-delete'])
 
   const isChecked = ref(props.todo.checked);
 
@@ -17,21 +17,29 @@ import { ref } from 'vue'
     checked:e.target.checked
     })
   }
+
+const todoDelete=()=>{
+
+  emit('todo-delete',{
+  id:props.todo.id,
+  })
+}
   
 </script>
 
 <template>
-  <div>
+  <div class="d-flex gap-1 align-items-center mb-1">
     <BFormCheckbox
-      id="checkbox-1"
+      :id="`checkbox-${todo.id}`"
       v-model="isChecked"
-      name="checkbox-1"
+      :name="`checkbox-${todo.id}`"
       value="accepted"
       unchecked-value="not_accepted"
       @change="toggleCheckbox"
       >
-      <span :class="{'muted':todo.checked }">{{todo.title}}</span>
+      <span :class="{muted:todo.checked }">{{todo.title}}</span>
     </BFormCheckbox>
+    <BButton variant="danger" size="sm" @click="todoDelete">삭제</BButton>
   </div>
 </template>
 

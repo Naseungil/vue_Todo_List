@@ -24,6 +24,12 @@ const toggleCheckbox = ({id,checked})=>{
 
 }
 
+const todoDelete = ({id})=>{
+  if(window.confirm('정말 삭제할까요')){
+    const idx = todos.findIndex(todo => todo.id === id);
+    todos.splice(idx,1);
+  }
+}
 </script>
 
 <template>
@@ -41,6 +47,7 @@ const toggleCheckbox = ({id,checked})=>{
         :key="todo.id" 
         :todo="todo"
         @toggle-checkbox ="toggleCheckbox"
+        @todo-delete ="todoDelete"
       />
 
   </div>
