@@ -18,10 +18,10 @@ const todos = reactive([
   {id:2, title:'취직하기', checked:false},
 ])
 
-const toggleCheckbox = (id, checked)=>{
-  console.log(id,checked, todos.values);
+const toggleCheckbox = ({id,checked})=>{
   const idx = todos.findIndex(todo => todo.id === id);
   todos[idx].checked = checked
+
 }
 
 </script>
